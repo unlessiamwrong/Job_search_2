@@ -1,0 +1,59 @@
+{% extends 'vacancy/base.html' %}
+{% block container %}
+    <main class="container mt-3">
+        <section>
+            <h1 class="h1 text-center mx-auto mt-4 py-5"><strong>Вакансии для <br>Junior-разработчиков</strong></h1>
+            <div class="row">
+                <div class="col-12 col-md-8 col-lg-6 offset-lg-3 offset-md-2">
+                    <form method="GET" action="" id="" class="form-inline mb-3">
+                        <div class="form-group col-8 col-md-10 pl-0">
+                            <input class="form-control w-100" name="s" type="search" value="{{ request.GET.s }}"
+                                   placeholder="Найти работу или стажировку"
+                                   aria-label="Найти работу или стажировку"/>
+                        </div>
+                        <div class="form-group col-4 col-md-2 pl-0">
+                            <button class="btn btn-primary wide w-100" type="submit">Найти</button>
+                        </div>
+                    </form>
+                    <p>Например:
+                        <a href="?s=Python"
+                           class="text-dark border-bottom border-dark m-1 text-decoration-none">Python</a>
+                        <a href="?s=Flask"
+                           class="text-dark border-bottom border-dark m-1 text-decoration-none">Flask</a>
+                        <a href="?s=Django"
+                           class="text-dark border-bottom border-dark m-1 text-decoration-none">Django</a>
+                        <a href="?s=Парсинг" class="text-dark border-bottom border-dark m-1 text-decoration-none">Парсинг</a>
+                        <a href="?s=ML" class="text-dark border-bottom border-dark m-1 text-decoration-none">ML</a>
+                    </p>
+                </div>
+            </div>
+            {% if vacancies %}
+                {% for vacancy in vacancies %}
+                    <div class="row mt-5">
+                        <div class="col-12 col-lg-8 offset-lg-2 m-auto">
+                            <div class="card mb-4">
+                                <div class="card-body px-4">
+                                    <div class="row">
+                                        <div class="col-12 col-md-8 col-lg-9">
+                                            <h2 class="h2 pb-2">{{ vacancy.title }}</h2>
+                                            <p class="mb-2">{{ vacancy.skills }}</p>
+                                            <p>От {{ vacancy.salary_min }} до {{ vacancy.salary_max }} руб.</p>
+                                            <p class="text-muted pt-1">{{ vacancy.published_at }}</p>
+                                        </div>
+                                        <div class="col-12 col-md-4 col-lg-3 d-flex align-items-end">
+                                            <a href="{% url 'vacancy' vacancy.id %}"><img
+                                                    src="{{ specialty.picture }}" width="130" height="80"
+                                                    alt=""></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h3 class="text-center mt-5">По запросу «{{ request.GET.s }}» ничего не найдено</h3>
+            {% endif %}
+        </section>
+    </main>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'vacancy/base.html' %}
+{% block container %}
+        <h2 style="text-align:center">Данные пользователя</h2>
+    <main class="container mt-5 pb-5">
+    <section class="col-12 card">
+
+        <h4 class="text mt-3 mx-3">Логин: {{ current_user.username }}</h4>
+        <h4 class="text mt-3 mx-3">Имя: {{ current_user.first_name }}</h4>
+        <h4 class="text mt-3 mx-3">Фамилия: {{ current_user.last_name }}</h4>
+        <h4><a class="nav-link active mt-1" href="{% url 'my_company' %}">Компания</a></h4>
+        <h4><a class="nav-link active" href="{% url 'my_resume' %}">Резюме</a></h4>
+    </section>
+    </main>
+{% endblock %}

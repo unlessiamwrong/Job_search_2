@@ -1,0 +1,28 @@
+{% extends 'vacancy/base.html' %}
+{% block container %}
+    <main class="container">
+        <div class="row">
+            <div class="col-8 col-lg-4 offset-2 offset-lg-4">
+                <div class="text-left mt-5 b-1">
+                    <h1 class="h3 mb-3 text-center font-weight-normal">Джуманджи</h1>
+                    <p class="h5 text-center font-weight-light">Создайте аккаунт</p>
+
+                    <form method="post" action="">{% csrf_token %}
+                        {% for field in form %}
+                            <div class="mt-4 form-label-group">
+                                <p class="text-muted">{{ field.label }}</p>
+                                {{ field }}
+                            </div>
+                        {% endfor %}
+                        {% if form.errors %}
+                            <p class="h6 mt-1 text-danger font-weight-normal">Логин неверного формата или занят</p>
+                            <p class="h6 mt-1 text-danger font-weight-normal">Пароли не совпадают</p>
+                        {% endif %}
+                        <button class="mt-5 btn btn-primary btn-lg btn-block" type="submit">Зарегистрироваться</button>
+                    </form>
+                    <div class="mt-4 text-center"><p>Есть аккаунт? <a href="{% url 'login' %}">Войдите!</a></p></div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
