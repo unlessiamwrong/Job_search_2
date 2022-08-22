@@ -21,7 +21,7 @@
                         {{ vacancy.description|safe }}
                     </div>
                     {% if request.user.is_anonymous %}
-                        <p class="h4 mt-1 text-danger font-weight-normal">Перед откликом на вакансию необходимо <a
+                        <p class="h4 mt-1 text-dark font-weight-normal">Перед откликом на вакансию необходимо <a
                                 href="{% url 'login' %}">авторизоваться</a></p>
                     {% else %}
                         <form action="" method="post">{% csrf_token %}

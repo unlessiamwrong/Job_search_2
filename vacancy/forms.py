@@ -66,7 +66,7 @@ class VacancyForm(ModelForm):
             'class': 'form-control'
         }
     ))
-    skills = CharField(max_length=20, label='Требуемые навыки', widget=Textarea(
+    skills = CharField(label='Требуемые навыки', widget=Textarea(
         attrs={
             'class': 'form-control'
         }

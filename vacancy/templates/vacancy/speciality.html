@@ -9,9 +9,11 @@
             </h1>
             <p class="text-center pt-1">{{ specialty.vacancies.count }} вакансий</p>
             {% for vacancy in vacancies %}
+                <a class="text-dark text-decoration-none" href="{% url 'vacancy' vacancy.id %}">
                 <div class="row mt-5">
                     <div class="col-12 col-lg-8 offset-lg-2 m-auto">
                         <div class="card mb-4">
+
                             <div class="card-body px-4">
                                 <div class="row">
                                     <div class="col-12 col-md-8 col-lg-9">
@@ -21,17 +23,18 @@
                                         <p class="text-muted pt-1">{{ vacancy.published_at }}</p>
                                     </div>
                                     <div class="col-12 col-md-4 col-lg-3 d-flex align-items-end">
-                                        <a href="{% url 'vacancy' vacancy.id %}"><img
-                                                src="{{ vacancy.company.logo.url }}"
+                                        <img src="{{ vacancy.company.logo.url }}"
                                                 width="130" height="80"
-                                                alt=""></a>
+                                                alt="">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             {% endfor %}
+</a>
         </section>
     </main>
 {% endblock %}
