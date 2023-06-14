@@ -1,1 +1,1 @@
-**<a href='https://stepik.org/lesson/307344/step/1?unit=289432'>Проектное задание главы 4. Простая и сложная версии.</a>**
+**Second part of application for job search**
